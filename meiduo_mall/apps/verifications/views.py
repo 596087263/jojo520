@@ -4,12 +4,15 @@ import logging
 from django.http import HttpResponse
 from django.views import View
 from django_redis import get_redis_connection
-from meiduo_mall.libs.captcha.captcha import captcha
+
+from apps.users.models import User
+from .libs.captcha.captcha import captcha
+from .libs.yuntongxun.ccp_sms import CCP
 
 logger = logging.getLogger('django')
 import random
 from django import http
-from celery_tasks.sms.tasks import ccp_send_sms_code
+# from celery_tasks.sms.tasks import ccp_send_sms_code
 
 
 class ImageCodeView(View):
@@ -101,7 +104,10 @@ class SMSCodeView(View):
         # CCP().send_template_sms(mobile, [sms_code, 5], 1)
 
         # 改为现在的写法, 注意: 这里的函数,调用的时候需要加: .delay()
-        ccp_send_sms_code.delay(mobile, sms_code)
+        # ccp_send_sms_code.delay(mobile, sms_code)
 
+        CCP().send_template_sms(mobile,
+                                [sms_code, 5],
+                                1)
         return http.JsonResponse({'code': 0,
                                   'errmsg': '发送短信成功'})

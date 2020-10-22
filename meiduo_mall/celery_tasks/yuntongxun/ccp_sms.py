@@ -2,7 +2,7 @@
 
 import ssl
 
-from meiduo_mall.libs.yuntongxun.CCPRestSDK import REST
+from apps.verifications.libs.yuntongxun import REST
 
 # sys.path ====> []
 # sys.path.insert(0, '../../../')
