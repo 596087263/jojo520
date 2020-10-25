@@ -2,7 +2,7 @@
 
 import ssl
 
-from apps.verifications.libs.yuntongxun import REST
+from celery_tasks.yuntongxun.CCPRestSDK import REST
 
 # sys.path ====> []
 # sys.path.insert(0, '../../../')
