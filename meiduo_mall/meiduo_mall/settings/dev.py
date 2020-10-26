@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'apps.users',
     'corsheaders',
     'apps.verifications',
+    'oauth.apps.OauthConfig',
 ]
 
 MIDDLEWARE = [
@@ -209,3 +210,4 @@ LOGGING = {
 
 AUTH_USER_MODEL = 'users.User'
 AUTHENTICATION_BACKENDS = ['users.utils.UsernameMobileAuthBackend']
+

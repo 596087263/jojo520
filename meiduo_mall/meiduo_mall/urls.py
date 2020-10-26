@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', include('apps.users.urls')),
     path(r'', include('apps.verifications.urls')),
+    path(r'', include('apps.oauth.urls')),
 ]
